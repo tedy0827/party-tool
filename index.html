@@ -98,7 +98,13 @@ word-break: break-all;
       <div class="copy-item" onclick="copyText(this)">/파티초대 낭만이구만</div>
       <div class="copy-item" onclick="copyText(this)">/파티초대 El없ol맑은i</div>
       <div class="copy-item" onclick="copyText(this)">/파티초대 레몬라임비터</div>
-    </div>
+   <div style="margin-top: 12px; text-align: center;">
+    <input id="bishopInput" type="text" placeholder="여기에 입력..." style="padding:8px; border-radius:8px; width:65%; max-width:240px; border:1px solid #ccc;">
+    <button onclick="copyCustomText('bishopInput')" style="padding:8px 12px; margin-left:6px; border-radius:8px; border:none; background:linear-gradient(to right, #4facfe, #00f2fe); color:white; cursor:pointer;">
+      복사
+    </button>
+  </div>
+</div>
 
     <!-- 다크나이트 -->
     <div class="category">
@@ -114,7 +120,7 @@ word-break: break-all;
       <h2>궁수</h2>
       <div class="copy-item" onclick="copyText(this)">/파티초대 다온김</div>
       <div class="copy-item" onclick="copyText(this)">/파티초대 보마지존</div>
-      <div class="copy-item" onclick="copyText(this)">/파티초대   </div>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 보마쌀먹</div>
     </div>
 
     <!-- 나이트로드 -->
@@ -143,6 +149,19 @@ word-break: break-all;
       document.body.removeChild(textarea);
       showToast("복사되었습니다: " + text);
     }
+function copyCustomText(inputId) {
+  const input = document.getElementById(inputId);
+  const text = input.value;
+  if (text.trim() === "") return;
+
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      showToast("복사되었습니다: " + text);
+    })
+    .catch(err => {
+      alert("복사 실패: " + err);
+    });
+}
 
     function showToast(message) {
       const toast = document.getElementById("toast");
