@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>직업별 복사 버튼</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 10px;
+      display: block;
+      justify-content: center;
+    }
+
+   .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 750px;
+  width: 100%;
+  margin: 0 auto; /* ✅ 가운데 정렬 유지 */
+  box-sizing: border-box;
+}
+
+/* 좁은 화면 대응 */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    padding: 0 12px;
+  }
+}
+
+    .category {
+      background: #ffffff;
+      padding: 12px 16px;
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .category h2 {
+      text-align: center;
+      font-size: 18px;
+      color: #222;
+      margin-bottom: 12px;
+    }
+
+    .copy-item {
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      color: white;
+      padding: 10px;
+      margin-bottom: 6px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease-in-out;
+      user-select: none;
+word-break: break-all;
+    }
+
+    .copy-item:hover {
+      background: linear-gradient(to right, #00f2fe, #4facfe);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    #toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #323232;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      display: none;
+      z-index: 9999;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid">
+    <!-- 비숍 -->
+    <div class="category">
+      <h2>비숍</h2>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 삼삼아빠</div>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 낭만이구만</div>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 El없ol맑은i</div>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 레몬라임비터</div>
+    </div>
+
+    <!-- 다크나이트 -->
+    <div class="category">
+      <h2>다크나이트</h2>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 konggisa</div>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 MSGCPT</div>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 엽킁</div>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 비스리</div>
+    </div>
+
+    <!-- 궁수 -->
+    <div class="category">
+      <h2>궁수</h2>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 다온김</div>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 보마지존</div>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 보마쌀먹</div>
+    </div>
+
+    <!-- 나이트로드 -->
+    <div class="category">
+      <h2>나이트로드</h2>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 빌딩숲</div>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 박구짱</div>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 칸초</div>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 죠마s</div>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 겨울색</div>
+      <div class="copy-item" onclick="copyText(this)">/파티초대 9시10분</div>
+     <div class="copy-item" onclick="copyText(this)">/파티초대 도널드트럼펫</div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <script>
+    function copyText(element) {
+      const text = element.innerText;
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+      showToast("복사되었습니다: " + text);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.innerText = message;
+      toast.style.display = "block";
+      setTimeout(() => {
+        toast.style.display = "none";
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>
