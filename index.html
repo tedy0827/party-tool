@@ -1,21 +1,103 @@
-<div class="category">
-<h2>🛡️ 다크나이트</h2>
-      <div class="copy-item" onclick="copyText(this)">konggisa</div>
-      <div class="copy-item" onclick="copyText(this)">용기사도련님</div>
-      <div class="copy-item" onclick="copyText(this)">딱형</div>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>직업별 복사 버튼</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 10px;
+    }
 
-</div>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      max-width: 700px;
+      width: 100%;
+      margin: 0 auto;
+    }
 
-<!-- 궁수 -->
+    .category {
+      background: #fff;
+      padding: 10px 12px;
+      border-radius: 14px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      width: 95%;
+      margin: 0 auto;
+    }
+
+    .category h2 {
+      text-align: center;
+      font-size: 16px;
+      color: #222;
+      margin: 8px 0;
+    }
+
+    .copy-item {
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      color: white;
+      padding: 8px;
+      margin-bottom: 6px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      transition: all 0.2s ease-in-out;
+      user-select: none;
+    }
+
+    .copy-item:hover {
+      background: linear-gradient(to right, #00f2fe, #4facfe);
+      transform: translateY(-1px);
+    }
+
+    #toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #323232;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      display: none;
+      z-index: 9999;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid">
+
+    <!-- 비숍 -->
+    <div class="category">
+      <h2>🧙‍♂️ 비숍</h2>    
+      <div class="copy-item" onclick="copyText(this)">삼삼아빠</div>
+      <div class="copy-item" onclick="copyText(this)">영냥냥이</div>
+      <div class="copy-item" onclick="copyText(this)">El없ol맑은i</div>
+      <div class="copy-item" onclick="copyText(this)">몸빵메딕</div>
+    </div>
+
+    <!-- 궁수 -->
     <div class="category">
       <h2>🏹 궁수</h2>
       <div class="copy-item" onclick="copyText(this)">다온김</div>
       <div class="copy-item" onclick="copyText(this)">이승아</div>
       <div class="copy-item" onclick="copyText(this)">치궁</div>
-      
-   
-      
-     
+    </div>
+
+    <!-- 다크나이트 -->
+    <div class="category">
+      <h2>🛡️ 다크나이트</h2>
+      <div class="copy-item" onclick="copyText(this)">konggisa</div>
+      <div class="copy-item" onclick="copyText(this)">용기사도련님</div>
+      <div class="copy-item" onclick="copyText(this)">딱형</div>
     </div>
 
     <!-- 나이트로드 -->
@@ -27,8 +109,6 @@
       <div class="copy-item" onclick="copyText(this)">한얼타</div>
       <div class="copy-item" onclick="copyText(this)">9시10분</div>
       <div class="copy-item" onclick="copyText(this)">tobi</div>
-     
-
     </div>
 
     <!-- 기타 -->
@@ -36,36 +116,21 @@
       <h2>✨ 기타</h2>
       <div class="copy-item" onclick="copyText(this)">언로썬</div>
       <div class="copy-item" onclick="copyText(this)">zi똑세존</div>
-    
-
     </div>
 
     <!-- 손님 -->
     <div class="category">
       <h2>👤 손님</h2>
       <div class="copy-item" onclick="copyText(this)">빅뚱</div>
-    <div class="categor뚱</div>
-      
-  
-     
-   
- 
-   </div>
- </div>
+    </div>
 
- <div id="toast"></div>
+  </div>
 
-<script>
-function copyText(element) {
-const id = element.innerText;
-const text = "/파티초대 " + id;
+  <div id="toast"></div>
 
-navigator.clipboard.writeText(text)
-.then(() => {
-// 버튼 색 잠시 변경
-const original = element.style.background;
-element.style.background = "linear-gradient(to right, #ffa500, #ffcc00)";
-setTimeout(() => element.style.background = original, 700);
-showToast("복사되었습니다: " + text);
-})
-.catch(err => alert("복사 실패: " + err));
+  <script>
+    function copyText(element) {
+      const id = element.innerText;
+      const text = "/파티초대 " + id;
+
+      navigator.clipboard.writeText(text)
